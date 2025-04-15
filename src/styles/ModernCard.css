@@ -1,0 +1,276 @@
+/**
+ * Modern Card Styles
+ * Modern, stylish card design for media gallery
+ */
+
+/* Modern Card Container */
+.modern-card {
+  position: relative;
+  background: linear-gradient(145deg, #1a1f25 0%, #1E293B 100%);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  aspect-ratio: 1;
+}
+
+.modern-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Media Container */
+.media-container {
+  position: relative;
+  width: 100%;
+  height: 75%;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.media-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.media-container:hover .media-image {
+  transform: scale(1.05);
+}
+
+/* Audio Container */
+.audio-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #0c2b7a 0%, #071a4a 100%);
+  position: relative;
+}
+
+.audio-container .audio-icon {
+  font-size: 3.5rem;
+  color: rgba(255, 255, 255, 0.95);
+  transition: transform 0.3s ease;
+  z-index: 1;
+  /* Ensure icon is fully visible */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Add subtle glow effect */
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+  /* Remove any circular background */
+  background: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.audio-container:hover .audio-icon {
+  transform: scale(1.1);
+}
+
+.audio-container .play-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  width: 3rem;
+  height: 3rem;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.audio-container .play-overlay svg {
+  font-size: 2rem;
+}
+
+.audio-container:hover .play-overlay {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Video Media */
+.media-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Play Overlay */
+.play-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  width: 3rem;
+  height: 3rem;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.play-overlay svg {
+  color: white;
+  font-size: 1.2rem;
+}
+
+.media-container:hover .play-overlay {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Card Info */
+.card-info {
+  padding: 0.75rem;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-date {
+  margin: 0.25rem 0 0;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Delete Button */
+.delete-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.2s ease;
+  padding: 0.5rem;
+}
+
+.delete-button:hover {
+  background: rgba(220, 38, 38, 0.8);
+}
+
+.delete-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.modern-card:hover .delete-button {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Media Grid Layout */
+.modern-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .modern-card {
+    border-radius: 0.75rem;
+  }
+
+  .delete-button {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Dark/Light Mode Styles */
+.modern-card.dark-mode {
+  background: linear-gradient(145deg, #1a1f25 0%, #1E293B 100%);
+}
+
+.modern-card.dark-mode .card-title {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.modern-card.dark-mode .card-date {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.modern-card.dark-mode .fallback-container {
+  background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+}
+
+.modern-card.dark-mode .fallback-icon {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.modern-card.dark-mode .audio-container {
+  background: linear-gradient(145deg, #0c2b7a 0%, #071a4a 100%);
+}
+
+.modern-card.light-mode {
+  background: linear-gradient(145deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.modern-card.light-mode .card-title {
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.modern-card.light-mode .card-date {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.modern-card.light-mode .fallback-container {
+  background: linear-gradient(145deg, #e2e8f0 0%, #cbd5e1 100%);
+}
+
+.modern-card.light-mode .fallback-icon {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.modern-card.light-mode .audio-container {
+  background: linear-gradient(145deg, #93c5fd 0%, #60a5fa 100%);
+}
+
+.fallback-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.fallback-icon {
+  font-size: 3rem;
+}

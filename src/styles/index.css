@@ -1,0 +1,23 @@
+/**
+ * Main CSS file
+ * Imports all CSS files
+ */
+
+@import './toast.css';
+@import './errorBoundary.css';
+@import './deleteConfirmation.css';
+
+/* Define custom properties for media player icons */
+:root {
+  --icon-play: "▶";
+  --icon-pause: "⏸";
+  --icon-mute: "🔇";
+  --icon-volume: "🔊";
+  --icon-fullscreen: "⛶";
+  --icon-exit-fullscreen: "⮌";
+  --icon-prev: "◀";
+  --icon-next: "▶";
+  --icon-close: "✕";
+}
+
+/* Add more imports as needed */

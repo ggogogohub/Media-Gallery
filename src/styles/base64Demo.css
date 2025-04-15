@@ -1,0 +1,154 @@
+.base64-demo {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.base64-demo h3 {
+  margin-top: 0;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.base64-demo .form-group {
+  margin-bottom: 15px;
+}
+
+.base64-demo .info-box {
+  background-color: rgba(48, 134, 248, 0.1);
+  border-left: 4px solid var(--primary-color);
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  border-radius: 0 4px 4px 0;
+}
+
+.base64-demo .info-box p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.base64-demo .form-hint {
+  display: block;
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 5px;
+}
+
+.base64-demo code {
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: monospace;
+  font-size: 0.9em;
+}
+
+.dark-mode .base64-demo .form-hint {
+  color: #aaa;
+}
+
+.dark-mode .base64-demo code {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ddd;
+}
+
+.base64-demo label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.base64-demo input,
+.base64-demo textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  font-family: inherit;
+}
+
+.base64-demo textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.base64-demo .btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.base64-demo .btn-primary:hover {
+  background-color: var(--primary-color-dark);
+}
+
+.base64-demo .preview {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px dashed var(--border-color);
+  border-radius: 4px;
+}
+
+.base64-demo .preview h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
+.base64-demo .image-preview-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+  position: relative;
+}
+
+.base64-demo .preview-note {
+  color: var(--text-color);
+  opacity: 0.7;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+.base64-demo img {
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.dark-mode .base64-demo img {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Dark mode specific styles */
+.dark-mode .base64-demo {
+  --card-bg: #2a2a2a;
+  --text-color: #e0e0e0;
+  --border-color: #444;
+  --input-bg: #333;
+  --primary-color: #3086f8;
+  --primary-color-dark: #2a75d8;
+}
+
+/* Light mode specific styles */
+.light-mode .base64-demo {
+  --card-bg: #ffffff;
+  --text-color: #333;
+  --border-color: #ddd;
+  --input-bg: #f9f9f9;
+  --primary-color: #3086f8;
+  --primary-color-dark: #2a75d8;
+}
