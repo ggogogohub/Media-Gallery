@@ -1,6 +1,6 @@
 # Media Gallery - Azure Blob Storage (COM682 Coursework 2 Part 2)
 
-![Media Gallery Banner](https://github.com/kelcho-spense/Image_Gallery_Azure_Blob_storage-Educator_Developer_Blog-/assets/57180726/38761210-2d3f-4f48-b54f-d923c43b6773)
+![Media Gallery Banner](https://github.com/ggogogohub/Media-Gallery)
 
 A modern, cloud-native media gallery application built with React and Azure Blob Storage. This application allows users to upload, view, and manage various media types including images, videos, and audio files. Developed as part of the COM682 Cloud Native Development module assessment.
 
