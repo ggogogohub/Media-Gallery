@@ -41,6 +41,10 @@ A modern, cloud-native media sharing platform built with React and Azure service
 
 ![Base64 Demo](src/assets/screencapture-localhost-5173-2025-04-15-21_26_50.png)
 
+### Azure Logic Apps REST API
+
+![Azure Logic Apps REST API](src/assets/screencapture-portal-azure-2025-04-15-21_52_59.png)
+
 ## Azure Blob Storage Integration
 
 This application demonstrates how to integrate Azure Blob Storage into a React application. Azure Blob Storage is a cloud-based object storage solution that enables developers to store and manage unstructured data such as:
