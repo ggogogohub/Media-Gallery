@@ -1,0 +1,22 @@
+# Python dependencies for Cloud-Native Media Gallery
+
+# Azure SDK
+azure-storage-blob>=12.13.0
+azure-cosmos>=4.3.0
+
+# Web Framework
+fastapi>=0.95.0
+uvicorn>=0.21.1
+
+# Utilities
+python-dotenv>=1.0.0
+python-multipart>=0.0.6
+aiofiles>=23.1.0
+
+# Image Processing
+Pillow>=9.4.0
+
+# Development
+pytest>=7.3.1
+black>=23.3.0
+flake8>=6.0.0

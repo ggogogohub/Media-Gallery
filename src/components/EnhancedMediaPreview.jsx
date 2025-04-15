@@ -559,7 +559,7 @@ const EnhancedMediaPreview = ({ isOpen, onClose, currentItem, mediaFiles }) => {
         )}
 
         <button
-          className="enhanced-info-btn"
+          className={`enhanced-info-btn ${showInfoPanel ? 'active' : ''}`}
           title="Media Information"
           onClick={() => setShowInfoPanel(!showInfoPanel)}
         >
@@ -576,34 +576,48 @@ const EnhancedMediaPreview = ({ isOpen, onClose, currentItem, mediaFiles }) => {
             </div>
             <div className="info-panel-content">
               <div className="info-item">
-                <span className="info-label">Name:</span>
+                <span className="info-label">File Name</span>
                 <span className="info-value">{currentMedia.fileName || currentMedia.name || 'Unknown File'}</span>
               </div>
               <div className="info-item">
-                <span className="info-label">Type:</span>
-                <span className="info-value">{currentMedia.type || 'Unknown'}</span>
+                <span className="info-label">Media Type</span>
+                <span className="info-value">{currentMedia.contentType || currentMedia.type || 'Unknown'}</span>
               </div>
-              {(currentMedia.type === 'video' || currentMedia.type === 'audio') && (
+              {(currentMedia.type === 'video' || currentMedia.type === 'audio' ||
+                currentMedia.contentType?.startsWith('video/') ||
+                currentMedia.contentType?.startsWith('audio/')) && (
                 <div className="info-item">
-                  <span className="info-label">Duration:</span>
+                  <span className="info-label">Duration</span>
                   <span className="info-value">{formatTime(duration)}</span>
                 </div>
               )}
               {currentMedia.createdOn && (
                 <div className="info-item">
-                  <span className="info-label">Created:</span>
+                  <span className="info-label">Upload Date</span>
                   <span className="info-value">{new Date(currentMedia.createdOn).toLocaleString()}</span>
                 </div>
               )}
               {currentMedia.size && (
                 <div className="info-item">
-                  <span className="info-label">Size:</span>
+                  <span className="info-label">File Size</span>
                   <span className="info-value">{formatFileSize(currentMedia.size)}</span>
+                </div>
+              )}
+              {currentMedia.containerName && (
+                <div className="info-item">
+                  <span className="info-label">Container</span>
+                  <span className="info-value">{currentMedia.containerName}</span>
+                </div>
+              )}
+              {currentMedia.blobName && (
+                <div className="info-item">
+                  <span className="info-label">Blob Name</span>
+                  <span className="info-value">{currentMedia.blobName}</span>
                 </div>
               )}
               {currentMedia.url && (
                 <div className="info-item">
-                  <span className="info-label">URL:</span>
+                  <span className="info-label">URL</span>
                   <span className="info-value info-url">{currentMedia.url}</span>
                 </div>
               )}

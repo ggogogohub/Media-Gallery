@@ -107,6 +107,11 @@
   padding: 0 16px;
 }
 
+.enhanced-info-btn.active {
+  color: rgba(59, 130, 246, 1);
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
 .enhanced-close-btn:hover {
   transform: scale(1.05);
 }
@@ -781,50 +786,32 @@
   left: 20px;
   width: 350px;
   max-width: 90%;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(59, 130, 246, 0.4);
   color: white;
   z-index: 20;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(59, 130, 246, 0.3);
   animation: enhancedScaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
 }
 
 .info-panel-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 16px 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(59, 130, 246, 0.3);
+  background: rgba(59, 130, 246, 0.2);
 }
 
 .info-panel-header h3 {
   margin: 0;
   font-size: 18px;
   font-weight: 500;
-}
-
-.info-close-btn {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.info-close-btn:hover {
-  background: rgba(255, 59, 48, 0.2);
-  transform: scale(1.1);
+  text-align: center;
 }
 
 .info-panel-content {
@@ -834,20 +821,28 @@
 }
 
 .info-item {
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   display: flex;
   flex-direction: column;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 12px;
+}
+
+.info-item:last-child {
+  border-bottom: none;
 }
 
 .info-label {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 4px;
+  color: rgba(59, 130, 246, 0.9);
+  margin-bottom: 6px;
+  font-weight: 500;
 }
 
 .info-value {
   font-size: 16px;
   word-break: break-word;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .info-url {
@@ -856,7 +851,9 @@
   background: rgba(0, 0, 0, 0.3);
   padding: 8px;
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  max-height: 80px;
+  overflow-y: auto;
 }
 
 /* Animations */

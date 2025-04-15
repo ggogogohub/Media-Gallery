@@ -1,8 +1,8 @@
-# Media Gallery - Azure Blob Storage (COM682 Coursework 2 Part 2)
+# Cloud-Native Media Gallery (COM682 Coursework 2 Part 2)
 
-![Media Gallery Banner](https://github.com/ggogogohub/Media-Gallery)
+![Media Gallery Screenshot](src/assets/screencapture-localhost-5173-2025-04-15-21_20_17.png)
 
-A modern, cloud-native media gallery application built with React and Azure Blob Storage. This application allows users to upload, view, and manage various media types including images, videos, and audio files. Developed as part of the COM682 Cloud Native Development module assessment.
+A modern, cloud-native media sharing platform built with React and Azure services. This application allows users to upload, view, and manage various media types including images, videos, and audio files. Developed as part of the COM682 Cloud Native Development module assessment.
 
 ## Features
 
@@ -10,10 +10,10 @@ A modern, cloud-native media gallery application built with React and Azure Blob
 - **Cloud Storage**: Leverages Azure Blob Storage for scalable, reliable cloud storage
 - **Modern UI**: Clean, responsive design with dark/light mode support
 - **Drag & Drop**: Easy file uploading with drag and drop functionality
-- **Media Preview**: Preview images, videos, and audio files before uploading
-- **Accessibility**: Built with accessibility in mind
-- **Error Handling**: Robust error handling with user-friendly notifications
-- **Optimized Performance**: Code optimized for efficiency and maintainability
+- **Enhanced Media Preview**: Modern, stylish preview with navigation and controls
+- **Media Information Panel**: View detailed information about media files
+- **Base64 Support**: Convert and display base64-encoded images
+- **Error Handling**: Robust error handling with fallback images and toast notifications
 - **Responsive Design**: Works seamlessly on desktop and mobile devices
 - **Interactive UI**: Engaging user interface with modern design elements
 
@@ -21,8 +21,25 @@ A modern, cloud-native media gallery application built with React and Azure Blob
 
 - **Frontend**: React.js with modern hooks and functional components
 - **Styling**: CSS with custom properties for theming
-- **Cloud Storage**: Azure Blob Storage
+- **Cloud Services**:
+  - Azure Blob Storage for media storage
+  - Azure Cosmos DB for metadata storage
+  - Azure Logic Apps for REST API implementation
 - **Build Tool**: Vite for fast development and optimized production builds
+
+## Screenshots
+
+### Media Gallery View
+
+![Media Gallery](src/assets/screencapture-localhost-5173-2025-04-15-21_20_17.png)
+
+### Media Preview
+
+![Media Preview](src/assets/screencapture-localhost-5173-2025-04-15-21_26_19.png)
+
+### Base64 Image Upload
+
+![Base64 Demo](src/assets/screencapture-localhost-5173-2025-04-15-21_26_50.png)
 
 ## Azure Blob Storage Integration
 
@@ -38,43 +55,44 @@ The application uses the `@azure/storage-blob` SDK to interact with Azure Blob S
 ## Prerequisites
 
 1. **Azure Account**: You'll need an Azure subscription. Students can get free credits through [Azure for Students](https://azure.microsoft.com/en-us/free/students/)
-2. **Azure Storage Account**: Create a storage account in the Azure Portal
+2. **Azure Resources**:
+   - Azure Storage Account for media storage
+   - Azure Cosmos DB for metadata storage
 3. **Node.js**: Version 14.x or higher
-4. **npm or yarn**: For package management
+4. **npm**: For package management
 
 ## Setup and Installation
 
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/kelcho-spense/Image_Gallery_Azure_Blob_storage-Educator_Developer_Blog-.git
-   cd Image_Gallery_Azure_Blob_storage-Educator_Developer_Blog-
+   git clone https://github.com/yourusername/cloud-native.git
+   cd cloud-native
    ```
 
 2. **Install dependencies**
 
    ```bash
    npm install
-   # or
-   yarn
    ```
 
-3. **Configure Azure Storage**
+3. **Configure Azure Services**
 
    - Create a `.env` file in the root directory (use `.env.example` as a template)
-   - Add your Azure Storage account name and SAS token
+   - Add your Azure Storage account name, SAS token, and Cosmos DB credentials
 
    ```
-   VITE_STORAGE_ACCOUNT=yourstorageaccountname
-   VITE_STORAGE_SAS=yoursastoken
+   VITE_AZURE_STORAGE_ACCOUNT=blobimagesgallery
+   VITE_AZURE_STORAGE_SAS_TOKEN=yoursastoken
+   VITE_COSMOS_DB_ENDPOINT=https://cosmossonu.documents.azure.com:443/
+   VITE_COSMOS_DB_KEY=yourcosmosdbkey
+   VITE_COSMOS_DB_DATABASE=MediaShareDB
    ```
 
 4. **Start the development server**
 
    ```bash
    npm run dev
-   # or
-   yarn dev
    ```
 
 5. **Open the application**
@@ -83,17 +101,21 @@ The application uses the `@azure/storage-blob` SDK to interact with Azure Blob S
 ## Project Structure
 
 ```
-/
+cloud-native/
 ├── public/              # Static assets
 ├── src/
 │   ├── assets/          # Images and other assets
 │   ├── components/      # React components
-│   │   ├── AppHeader.jsx           # Application header with theme toggle
+│   │   ├── Base64Demo.jsx          # Component for base64 image upload demo
 │   │   ├── DeleteConfirmation.jsx  # Confirmation dialog for file deletion
+│   │   ├── EnhancedMediaPreview.jsx # Modern media preview component
 │   │   ├── ErrorBoundary.jsx       # Error boundary for catching runtime errors
 │   │   ├── Loading.jsx             # Loading indicator component
-│   │   ├── MediaCard.jsx           # Individual media item card component
+│   │   ├── MediaCard.jsx           # Legacy media item card component
 │   │   ├── MediaGallery.jsx        # Main gallery component for displaying media
+│   │   ├── MediaPreview.jsx        # Legacy media preview component
+│   │   ├── ModernHeader.jsx        # Modern application header with theme toggle
+│   │   ├── NewMediaCard.jsx        # Modern media item card component
 │   │   ├── ToastManager.jsx        # Toast notification system
 │   │   ├── Toast.jsx               # Individual toast notification component
 │   │   ├── UploadForm.jsx          # Form for uploading media files
@@ -106,10 +128,13 @@ The application uses the `@azure/storage-blob` SDK to interact with Azure Blob S
 │   │   ├── useThemeMode.js     # Hook for managing dark/light theme
 │   │   └── useToast.js         # Hook for toast notifications
 │   ├── styles/          # CSS files for components
-│   │   ├── deleteConfirmation.css  # Styles for delete confirmation dialog
-│   │   ├── errorBoundary.css      # Styles for error boundary component
-│   │   ├── index.css              # CSS imports for all component styles
-│   │   └── toast.css              # Styles for toast notifications
+│   │   ├── base64Demo.css           # Styles for base64 demo component
+│   │   ├── deleteConfirmation.css   # Styles for delete confirmation dialog
+│   │   ├── enhancedMediaPreview.css # Styles for enhanced media preview
+│   │   ├── errorBoundary.css        # Styles for error boundary component
+│   │   ├── mediaPreview.css         # Styles for legacy media preview
+│   │   ├── unifiedMediaControls.css # Styles for unified media controls
+│   │   └── toast.css                # Styles for toast notifications
 │   ├── utils/           # Utility functions
 │   │   └── fileUtils.js  # File handling utilities
 │   ├── App.jsx          # Main application component
@@ -121,12 +146,14 @@ The application uses the `@azure/storage-blob` SDK to interact with Azure Blob S
 └── vite.config.js       # Vite configuration
 ```
 
-## Azure Storage Setup Guide
+## Azure Resources Setup
+
+### Blob Storage
 
 1. **Create an Azure Storage Account**
 
    - Go to the [Azure Portal](https://portal.azure.com/)
-   - Create a new Storage Account
+   - Create a new Storage Account named `blobimagesgallery`
    - Choose the appropriate subscription, resource group, and region
 
 2. **Create Containers**
@@ -153,8 +180,29 @@ The application uses the `@azure/storage-blob` SDK to interact with Azure Blob S
    - Set an appropriate expiry time
    - Generate the SAS token and copy it (without the leading '?')
 
-5. **Configure the Application**
-   - Add the Storage Account name and SAS token to your `.env` file
+### Cosmos DB
+
+1. **Create a Cosmos DB Account**
+
+   - Go to the [Azure Portal](https://portal.azure.com/)
+   - Create a new Cosmos DB account named `cosmossonu`
+   - Choose the Core (SQL) API
+   - Select the appropriate region
+
+2. **Create a Database**
+
+   - In your Cosmos DB account, navigate to "Data Explorer"
+   - Create a new database named `MediaShareDB`
+
+3. **Create Containers**
+
+   - In your database, create three containers:
+     - `imagesContainer` (partition key: `/id`)
+     - `videoContainer` (partition key: `/id`)
+     - `audioContainer` (partition key: `/id`)
+
+4. **Configure the Application**
+   - Add the Cosmos DB endpoint and key to your `.env` file
 
 ## Contributing
 
@@ -164,37 +212,58 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
+## Features in Detail
+
+### Media Gallery
+
+- Modern grid layout of media cards
+- Filter by media type
+- Responsive design for all screen sizes
+- Dark/light mode support that affects all UI components
+- Error handling with fallback images
+
+### Media Preview
+
+- Full-screen preview for all media types
+- Navigation between media files with counter indicator
+- Media controls for audio and video with progress bar
+- Information panel with detailed file metadata
+- Modern, stylish icons and controls
+
+### Base64 Image Support
+
+- Convert and display base64-encoded images
+- Preview before upload
+- Support for various image formats
+- Automatic detection of image type
+
+### Error Handling
+
+- Robust error handling with toast notifications
+- Fallback images for failed media loading
+- Graceful degradation for unsupported file types
+
 ## Optimizations and Best Practices
 
 This project has been optimized for the COM682 Cloud Native Development assessment with the following improvements:
 
 1. **Code Optimization**:
 
-   - Removed unnecessary files and components (CorsErrorMessage, ErrorMessage, fileIcons, filePreview, etc.)
-   - Consolidated utility functions into a single fileUtils.js file
-   - Improved error handling with a centralized toast notification system
    - Enhanced component structure with clear separation of concerns
-   - Removed duplicate code and redundant CSS files
+   - Improved error handling with fallback images and toast notifications
+   - Added support for base64-encoded images
+   - Implemented content type detection for better media type handling
 
-2. **Performance Enhancements**:
+2. **UI/UX Improvements**:
 
-   - Optimized Azure Blob Storage operations with proper error handling
-   - Improved media loading and rendering with lazy loading for images
-   - Enhanced state management with custom React hooks
-   - Optimized file preview generation with proper cleanup to prevent memory leaks
-   - Improved video and audio playback with better browser compatibility
-
-3. **UI/UX Improvements**:
-
-   - Refined delete confirmation dialog with improved z-index management
-   - Enhanced media preview functionality for all file types (images, videos, audio)
-   - Improved accessibility features with proper ARIA labels and semantic HTML
+   - Enhanced media preview with modern, stylish controls
+   - Added media information panel for detailed file metadata
+   - Improved audio visualization with animated wave bars
    - Optimized responsive design for all screen sizes
-   - Added dark/light mode support with system preference detection
+   - Enhanced dark/light mode support that affects all UI components
 
-4. **Documentation**:
+3. **Documentation**:
    - Comprehensive README with detailed setup instructions
-   - Detailed code comments with JSDoc annotations
    - Clear project structure documentation
    - Improved component documentation with PropTypes validation
 
