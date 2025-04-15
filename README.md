@@ -43,7 +43,8 @@ A modern, cloud-native media sharing platform built with React and Azure service
 
 ### Azure Logic Apps REST API
 
-![Azure Logic Apps REST API](src/assets/screencapture-portal-azure-2025-04-15-21_56_35.png)(src/assets/screencapture-portal-azure-2025-04-15-21_52_59.png)
+![Azure Logic Apps REST API](src/assets/screencapture-portal-azure-2025-04-15-21_56_35.png)
+![Azure Logic Apps REST API](src/assets/screencapture-portal-azure-2025-04-15-21_52_59.png)
 
 ## Azure Blob Storage Integration
 
