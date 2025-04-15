@@ -66,8 +66,7 @@ The application uses the `@azure/storage-blob` SDK to interact with Azure Blob S
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/yourusername/cloud-native.git
-   cd cloud-native
+   git clone https://github.com/ggogogohub/Media-Gallery.git
    ```
 
 2. **Install dependencies**
